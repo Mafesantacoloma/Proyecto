@@ -1,3 +1,31 @@
-h2= status
-p= message
-pre.error!= stackHighlighted
+extends layout
+
+block content
+    div(class="container")
+        
+    .container.pt-4
+    h2 Operaciones CRUD
+    .row.mt-5
+      .col-12
+        table.table.bg-white
+          thead
+            tr
+              th(scope='col') Carnet
+              th(scope='col') Nombre
+              th(scope='col') Apellido
+              th(scope='col') Telefono
+              th(scope='col') Email 
+          tbody
+          - for (var i = 0; i <alumno.length; i++)
+            tr
+              th(scope='row') #{alumno[i].carnet}
+              td #{alumno[i].nombre}
+              td #{alumno[i].apellido}
+              td #{alumno[i].telefono}
+              td #{alumno[i].email}
+
+
+            div(class="row")
+                div(class="input-field col s6")
+                    input(value="" , id="first_name2" , type="text" , class="validate")
+                    label(class="active" , for="first_name2") Carnet

@@ -1,19 +1,21 @@
 const express = require("express");
 const router = express.Router();
-const authController = require("../controllers/authController");
-const userController = require("../controllers/userController");
+const AlumnoControlador = require("../controllers/AlumnoControlador");
+
+
 
 router.get("/", (req, res) => {
-  res.render("layout", { title: "Layout" });
+  console.log("SUPER FUNCIONA")
+  AlumnoControlador.getAlumno((alumno, err) => {
+    if (err)
+      res.json({
+        success: false,
+        msg: 'Failed to show Users'
+      });
+    else
+      res.render("error",{alumno});
+      console.log(alumno);
+  });
 });
-
-router.get("signin", (req, res) => {
-  res.render("auth/signin", { title: "Iniciar Sesion" });
-});
-router.post("signin", authController.signin);
-router.get("signup", (req, res) => {
-  res.render("auth/signup", { title: "Registrarse" });
-});
-router.post("signup", userController.signup, authController.signin);
-
+router.post("/create")
 module.exports = router;

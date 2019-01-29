@@ -3,6 +3,7 @@
  * Basado en los archivos de Wes Bos (https://github.com/wesbos)
  */
 // Importamos Todas Nuestras Dependencias
+const pug = require('pug');
 const express = require("express");
 const session = require("express-session");
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
@@ -17,6 +18,7 @@ const sequelize = require("./config/database");
 const routes = require("./routes/index");
 const helpers = require("./helpers");
 const errorHandlers = require("./handlers/errorHandlers");
+const alumnocontrolador= require("./controllers/AlumnoControlador");
 require("./config/passport");
 
 // Creamos La aplicacion en Express
@@ -35,6 +37,16 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // Con esto vamos a tener validaciones que viene por defecto
 app.use(expressValidator());
+
+
+
+/* app.get('/', function (req, res) {
+  let AlumnoControlador= {
+    controlador: alumnocontrolador
+  };
+  res.render('error.pug', AlumnoControlador ); // include a template file
+}); */
+
 
 // Se creara en req un propiedad cookies con las cookies que viene de cada peticion
 app.use(cookieParser());
