@@ -12,7 +12,7 @@ const Alumno = sequelize.define("alumnos", {
   },
   nombre: {
     type: Sequelize.STRING,
-    allowNull: false,
+    allowNull: false
     
   },
   apellido: {
@@ -28,12 +28,22 @@ const Alumno = sequelize.define("alumnos", {
   email: {
     type: Sequelize.STRING,
     allowNull: false
-  }
+  },
+
+  activo: {
+    type: Sequelize.TINYINT,
+    allowNull: false,
+    defaultValue: 1 ,
+
+    validate: {
+      notEmpty: true
+    } 
+  
 },
-{
+
   timestamps: false,
   freezeTableName: true
-});
 
+});
 
 module.exports = Alumno;
